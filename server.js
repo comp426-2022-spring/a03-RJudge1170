@@ -10,7 +10,11 @@ const logging = (req, res, next) => {
     next()
 }
 
-var port = 5000
+const args = require("minimist")(process.argv.slice(2))
+
+args["port"]
+
+const port = args.port || 5000
 
 const server = app.listen(port, () => {
     console.log('App is running on port %PORT%'.replace('%PORT%', port))
