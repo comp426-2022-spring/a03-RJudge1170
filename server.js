@@ -75,6 +75,18 @@ function countFlips(array) {
 
 }
 
+function flipACoin(call) {
+
+    let flipResult = coinFlip();
+  
+    if (flipResult === call) {
+      return {call: call, flip: flipResult, result: 'win'};
+    } else {
+      return {call: call, flip: flipResult, result: 'lose'};
+    }
+  
+}
+
 app.get('/app', (req, res) => {
     res.type('text/plain')
     res.status(200).end('OK')
@@ -101,6 +113,10 @@ app.get('/app/flips/:number', (req, res) => {
     let array = coinFlips(req.params.number);
 
     res.status(200).json({ 'raw' : array, 'summary' : countFlips(array) })
+})
+
+app.get('/app/flip/call/:call', (req, res) => {
+    res.status(200).json( flipACoin(req.params.call) )
 })
 
 app.use(function(req, res) {
