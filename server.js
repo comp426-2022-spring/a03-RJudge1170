@@ -29,7 +29,19 @@ function coinFlip() {
     } else {
       return 'tails';
     }
-  }
+}
+
+function coinFlips(flips) {
+    const resultArray = new Array();
+  
+    for (let i = 0; i < flips; i++) {
+  
+      resultArray[i] = coinFlip();
+  
+    }
+  
+    return resultArray;
+}
 
 app.get('/app', (req, res) => {
     res.type('text/plain')
@@ -50,6 +62,10 @@ app.get('/app/echo/', logging, (req, res) => {
 
 app.get('/app/flip', (req, res) => {
     res.status(200).json({ 'flip' : coinFlip() })
+})
+
+app.get('/app/flips/:number', (req, res) => {
+    res.status(200).json({ 'raw' : coinFlips(req.params.number) })
 })
 
 app.use(function(req, res) {
