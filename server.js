@@ -43,6 +43,38 @@ function coinFlips(flips) {
     return resultArray;
 }
 
+function countFlips(array) {
+    let tailsCount = 0;
+    let headsCount = 0;
+
+    for (let i = 0; i < array.length; i++) {
+
+      if (array[i] === 'heads') {
+        headsCount++;
+      } else {
+        tailsCount++;
+      }
+
+    }
+    
+    if (tailsCount > 0 && headsCount === 0) {
+
+      return { tails: tailsCount};
+
+    }
+
+    if (headsCount === 0 && headsCount > 0) {
+
+      return { heads: headsCount };
+
+    }
+
+    var returnObj = { tails: tailsCount, heads: headsCount }
+
+    return returnObj;
+
+}
+
 app.get('/app', (req, res) => {
     res.type('text/plain')
     res.status(200).end('OK')
@@ -65,7 +97,10 @@ app.get('/app/flip', (req, res) => {
 })
 
 app.get('/app/flips/:number', (req, res) => {
-    res.status(200).json({ 'raw' : coinFlips(req.params.number) })
+
+    let array = coinFlips(req.params.number);
+
+    res.status(200).json({ 'raw' : array, 'summary' : countFlips(array) })
 })
 
 app.use(function(req, res) {
