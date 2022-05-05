@@ -1,0 +1,25 @@
+{
+  "name": "a03-rjudge1170",
+  "version": "0.1.0",
+  "description": "Build an API to flip some coins",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js --port=5555"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2022-spring/a03-RJudge1170.git"
+  },
+  "author": "Ryan Judge",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/comp426-2022-spring/a03-RJudge1170/issues"
+  },
+  "homepage": "https://github.com/comp426-2022-spring/a03-RJudge1170#readme",
+  "dependencies": {
+    "express": "^4.17.3",
+    "minimist": "^1.2.6",
+    "nodemon": "^2.0.15",
+    "yargs": "^17.3.1"
+  }
+}
